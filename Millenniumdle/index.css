@@ -1,0 +1,11 @@
+@font-face {
+    font-family: Millennium;
+    src: url(resources/fonts/Sigvar-Serial-Regular.ttf);
+}
+body{
+    background-color: lightcoral;
+}
+h1{
+    font-family: Millennium;
+    color:red;
+}

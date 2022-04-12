@@ -1,0 +1,5 @@
+Add in navigation through js to the navigation tab so when navigation 
+changes I don't have to change in each spot and no repeat of code
+
+Add in a skills, languages, technologies, softwares page
+Add in download links for each project
