@@ -2,6 +2,46 @@
 No hard borders or edges but curves and borders don't fully connect but are like underlines
 When you hover over a button it should highlight
 Be able to change color scheme by pushing a button on the site*/
+@font-face {
+    font-family: Millennium;
+    src: url(resources/fonts/Sigvar-Serial-Regular.ttf);
+}
+body{
+    background-color: rgb(30,30,30);
+}
+::-webkit-scrollbar {
+    display: none;
+}
 p{
-    color:red;
+    color:rgb(150,150,150);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h1{
+    text-align: center;
+}
+h1, h2{
+    color:white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+#projectShowcase{
+    width: calc(100vw - 16px);
+    height: 100vh;
+    overflow:scroll;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    box-shadow: -1px 1px 15px white;
+}
+.project{
+    flex:none;
+    width:100%;
+    height:100%;
+    scroll-snap-align: start;
+}
+#millenniumdle{
+    text-align: center;
+    font-family: Millennium;
+    background-color: red;
+}
+#millenniumdle p{
+    color:black;
 }
