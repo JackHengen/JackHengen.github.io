@@ -24,27 +24,25 @@ h1, h2{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 #projectShowcase{
-    width: calc(100vw - 16px);
+    width: 50vw;
+    margin: auto;
     height: 50vh;
     overflow:scroll;
     display: flex;
     scroll-snap-type: x mandatory;
-    justify-content: center;
-    padding: 15px 0px;
+}
+#projectShowcase:hover{
+    box-shadow: 0px 0px 15px white;
 }
 .project{
-    box-shadow: 0px 0px 15px white;
     flex:none;
-    width:50%;
     height:100%;
+    width: 100%;
     scroll-snap-align: start;
 }
 .project p{
     margin:5px;
     
-}
-.project :hover{
-    transform: translateX(10);
 }
 #millenniumdle{
     text-align: center;
