@@ -25,17 +25,26 @@ h1, h2{
 }
 #projectShowcase{
     width: calc(100vw - 16px);
-    height: 100vh;
+    height: 50vh;
     overflow:scroll;
     display: flex;
     scroll-snap-type: x mandatory;
-    box-shadow: -1px 1px 15px white;
+    justify-content: center;
+    padding: 15px 0px;
 }
 .project{
+    box-shadow: 0px 0px 15px white;
     flex:none;
-    width:100%;
+    width:50%;
     height:100%;
     scroll-snap-align: start;
+}
+.project p{
+    margin:5px;
+    
+}
+.project :hover{
+    transform: translateX(10);
 }
 #millenniumdle{
     text-align: center;
