@@ -12,10 +12,6 @@ body{
 ::-webkit-scrollbar {
     display: none;
 }
-p{
-    color:rgb(150,150,150);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
 h1{
     text-align: center;
 }
@@ -25,7 +21,7 @@ h1, h2{
 }
 #projectShowcase{
     width: 50vw;
-    margin: auto;
+    margin: 20vh auto;
     height: 50vh;
     overflow:scroll;
     display: flex;
@@ -41,14 +37,14 @@ h1, h2{
     scroll-snap-align: start;
 }
 .project p{
-    margin:5px;
     
+    margin: 10px;
 }
 #millenniumdle{
     text-align: center;
     font-family: Millennium;
     background-color: red;
-}
-#millenniumdle p{
-    color:black;
+    background-image: url("resources\\Millennium Circle Transparent.png");
+    background-position: center;
+    color:white;
 }

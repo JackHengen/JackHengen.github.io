@@ -8,10 +8,23 @@
     <link rel="stylesheet" href="millenniumdle.css">
 </head>
 <body>
+    <div id="container">
+
+        <h1>Millennium<span style="color:greenyellow">dle</span></h1>
+        
+        <div id="results">
+
+        </div>
+
+        <input type="text" id="guessTxtInput">
+
+        <div id="guessContainer">
+            <button id="guessBtn" onclick="guess()">Guess</button>
+            <div id="guessDisplay"></div>
+        </div>
     
-    <h1>Millennium<span style="color:greenyellow">dle</span></h1>
-    <input type="text" id="guessTxtInput">
-    <button id="guessBtn" onclick="guess()">Guess</button>
+    </div>
+
     <script src="classes.js"></script>
     <script src="teachers.js"></script>
     <script src="millenniumdle.js"></script>

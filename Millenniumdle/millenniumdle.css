@@ -4,8 +4,37 @@
 }
 body{
     background-color: lightcoral;
+    font-family: Millennium;
 }
 h1{
-    font-family: Millennium;
     color:red;
+}
+button{
+    background-color: red;
+    border: 2px solid gray;
+    height:2em;
+    font-family: Millennium;
+}
+button:hover{
+    background-color: white;
+    color:black;
+    
+}
+#container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+#guessContainer{
+    display:flex;
+    align-items: center;
+}
+#guessDisplay{
+    background-color: white;
+    border: 2px solid gray;
+    height:2em;
+    padding: 0px;
+}
+#guessDisplay p{
+    margin:0px;
 }
