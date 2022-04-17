@@ -2,24 +2,53 @@
 const guessTxtInput =document.getElementById("guessTxtInput");
 const resultOutput = document.getElementById("results");
 const guessDisplay = document.getElementById("guessDisplay");
+const winDialog = document.getElementById("winDialog");
 
-
-
-const answerTeacher = getNewTeacher();
+let won = false;
+let answerTeacher = getNewTeacher();
 let guesses = 0;
 guessDisplay.innerHTML=`<p>${guesses}</p>`
+
+function newGame(){
+    won = false;
+    answerTeacher = getNewTeacher();
+    winDialog.close();
+    resultOutput.innerHTML="";
+    guesses =0;
+    guessDisplay.innerHTML=`<p>${guesses}</p>`
+}
+
+
 function guess(){
+
     const userGuess = guessTxtInput.value;
-    for(let i=0; i<teachers.length; i++)
-    {
-        if(userGuess === teachers[i].name){
-            guesses ++;
-            calculateCorrectTeacher(teachers[i])
-            break;
+    const guessedTeacher=getTeacher(userGuess);
+
+    if(guessedTeacher){
+        guesses ++;
+        guessTxtInput.value="";
+        calculateCorrectTeacher(guessedTeacher);
+        if(won===true){
+            winDialog.showModal();
         }
+    }
+    else{
+        resultOutput.innerHTML+=`<p style="color:red">That isn't a teacher</p>`
     }
     guessDisplay.innerHTML=`<p>${guesses}</p>`
 }
+
+
+function getTeacher(guess){
+    for(let i=0; i<teachers.length; i++)
+    {
+        if(guess === teachers[i].name){
+            return teachers[i];
+        }
+    }
+    return false;
+}
+
 
 function calculateCorrectTeacher(guess){
     let nameCheck="❌";
@@ -30,16 +59,17 @@ function calculateCorrectTeacher(guess){
     if(guess.name===answerTeacher.name)
     {
         nameCheck="✅";
-    }  
+        won = true;
+    }
     if(guess.hair===answerTeacher.hair)
     {
         hairCheck="✅";
     }
     for(let i=0; i<answerTeacher.teachesSubjects.length; i++)
     {
-        for(let i=0; i<guess.teachesSubjects.length; i++)
+        for(let j=0; j<guess.teachesSubjects.length; j++)
         {
-            if(guess.teachesSubjects[i]===answerTeacher.teachesSubjects[i])
+            if(guess.teachesSubjects[j]===answerTeacher.teachesSubjects[i])
             {
                 subjectCheck="✅"
             }
@@ -47,9 +77,9 @@ function calculateCorrectTeacher(guess){
     }
     for(let i=0; i<answerTeacher.teachesGrades.length; i++)
     {
-        for(let i=0; i<guess.teachesGrades.length; i++)
+        for(let j=0; j<guess.teachesGrades.length; j++)
         {
-            if(guess.teachesGrades[i]===answerTeacher.teachesGrades[i])
+            if(guess.teachesGrades[j]===answerTeacher.teachesGrades[i])
             {
                 gradeCheck="✅"
             }

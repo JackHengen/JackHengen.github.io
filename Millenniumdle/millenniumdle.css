@@ -5,6 +5,7 @@
 body{
     background-color: lightcoral;
     font-family: Millennium;
+    text-align: center;
 }
 h1{
     color:red;
@@ -37,4 +38,7 @@ button:hover{
 }
 #guessDisplay p{
     margin:0px;
+}
+#winDialog{
+    text-align: center;
 }
