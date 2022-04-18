@@ -7,6 +7,7 @@ const winDialog = document.getElementById("winDialog");
 let won = false;
 let answerTeacher = getNewTeacher();
 let guesses = 0;
+let guessHistory =[];
 guessDisplay.innerHTML=`<p>${guesses}</p>`
 
 
@@ -24,7 +25,6 @@ function guess(){
 
     const userGuess = guessTxtInput.value;
     const guessedTeacher=getTeacher(userGuess);
-
     if(guessedTeacher){
         guesses ++;
         guessTxtInput.value="";

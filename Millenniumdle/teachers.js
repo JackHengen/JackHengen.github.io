@@ -13,7 +13,7 @@ const teachers=[
         name:"Ms.Baumgarten", hair:"black",teachesGrades:["N/A"],teachesSubjects:["N/A"]
     }),
     new Teacher({
-        name:"Mr.Kodilla",hair:"black",teachesGrades:[10,12],teachesSubjects:["English"]
+        name:"Mr.Kodila",hair:"black",teachesGrades:[10,12],teachesSubjects:["English"]
     }),
     new Teacher({
         name:"Mr.Hines",hair:"black",teachesGrades:[11,12],teachesSubjects:["Math"]
