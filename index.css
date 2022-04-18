@@ -44,7 +44,7 @@ h1, h2{
     text-align: center;
     font-family: Millennium;
     background-color: red;
-    background-image: url("resources\\Millennium Circle Transparent.png");
+    background-image: url("resources/Millennium Circle Transparent.png");
     background-position: center;
     color:white;
 }

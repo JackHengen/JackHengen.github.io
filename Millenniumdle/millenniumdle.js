@@ -9,6 +9,7 @@ let answerTeacher = getNewTeacher();
 let guesses = 0;
 guessDisplay.innerHTML=`<p>${guesses}</p>`
 
+
 function newGame(){
     won = false;
     answerTeacher = getNewTeacher();
@@ -38,11 +39,10 @@ function guess(){
     guessDisplay.innerHTML=`<p>${guesses}</p>`
 }
 
-
 function getTeacher(guess){
     for(let i=0; i<teachers.length; i++)
     {
-        if(guess === teachers[i].name){
+        if(guess.toLowerCase() === teachers[i].name.toLowerCase()){
             return teachers[i];
         }
     }
@@ -93,6 +93,20 @@ function getNewTeacher(){
     const index = Math.floor(Math.random() * teachers.length);
     return teachers[index];
 }
+
+function browseName(){
+    input =guessTxtInput.value;
+
+}
+
+guessTxtInput.addEventListener("keyup", (e) => {
+    if(e.key ==="Enter" && guessTxtInput.value != ""){
+        guess();
+    }
+})
+
+
+
 /*
 function getPersonDetails(person){
     console.log(`name:${person.name}, grade:${person.gradeLevel}, hair color:${person.hair}, eye color:${person.eyeColor}`);
