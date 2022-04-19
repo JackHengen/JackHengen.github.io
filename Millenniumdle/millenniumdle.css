@@ -10,41 +10,59 @@ body{
 h1{
     color:red;
 }
-button{
-    background-color: red;
-    border: 2px solid gray;
-    height:2em;
-    font-family: Millennium;
-    box-sizing: border-box;
-    -moz-box-sizing:border-box; /* Firefox */
-    -webkit-box-sizing:border-box; /* Safari */
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
 }
-button:hover{
-    background-color: white;
-    color:black;
-    
-}
-#container{
+#gameContainer{
     display:flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+}
+#results{
+    width: 60%;
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+.result{
+    display: inline-block;
+    width: 25%;
 }
 #guessContainer{
     display:flex;
     align-items: center;
 }
+#guessBtn{
+    font-family: Millennium;
+    box-sizing: border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */
+}
 #guessDisplay{
     background-color: white;
-    border: 2px solid gray;
-    height: 1.5em;
-    width: 1.5em;
-    margin: 1em;
+    border: 1px solid gray;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    border-radius: 10%;
 }
-
-#winDialog{
-    text-align: center;
+dialog{
+    max-width: 25vw;
+    min-width: 30ch;
+}
+dialog::backdrop{
+    background-color: rgba(50,50,50,.25);
+}
+@media screen and (max-width:1160px){
+    .result{
+        width: 50%;
+    }
+}
+@media screen and (max-width:800px){
+    .result{
+        width: 100%;
+    }
 }

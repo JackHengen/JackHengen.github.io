@@ -7,12 +7,18 @@
     <title>Millenniumdle</title>
     <link rel="stylesheet" href="millenniumdle.css">
 </head>
+
 <body>
-    <div id="container">
+    <header>
+
         <h1>Millennium<span style="color:greenyellow">dle</span></h1>
+
+    </header>
+
+    <div id="gameContainer">
         
         <div id="results">
-
+            
         </div>
 
         <input type="text" id="guessTxtInput">
@@ -27,12 +33,24 @@
     <dialog id="winDialog">
 
         <h1>YOU WON!</h1>
-        <a href="">Add a person into the game</a>
+        <a href="">Add a student into the game</a>
         <br>
         <br>
         <button onclick="newGame()">Play Again</button>
 
-    </div>
+    </dialog>
+
+    <dialog id="howToPlay">
+        <h1>How to play</h1>
+        
+        <p>Try to guess a mystery Millennium teacher chosen at random</p>
+
+        <ol>
+            <li>Input any teacher and press guess</li>
+            <li>The game will tell you whether certain traits of that teacher match the mystery teacher</li>
+            <li>For example</li>
+        </ol>   
+    </dialog>
 
 
 

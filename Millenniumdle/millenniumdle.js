@@ -3,12 +3,14 @@ const guessTxtInput =document.getElementById("guessTxtInput");
 const resultOutput = document.getElementById("results");
 const guessDisplay = document.getElementById("guessDisplay");
 const winDialog = document.getElementById("winDialog");
+const helpDialog = document.getElementById("howToPlay");
+
 
 let won = false;
 let answerTeacher = getNewTeacher();
 let guesses = 0;
 let guessHistory =[];
-guessDisplay.innerHTML=`<p>${guesses}</p>`
+guessDisplay.innerHTML=`<p>${guesses}</p>`;
 
 
 function newGame(){
@@ -17,7 +19,7 @@ function newGame(){
     winDialog.close();
     resultOutput.innerHTML="";
     guesses =0;
-    guessDisplay.innerHTML=`<p>${guesses}</p>`
+    guessDisplay.innerHTML=`<p>${guesses}</p>`;
 }
 
 
@@ -26,24 +28,67 @@ function guess(){
     const userGuess = guessTxtInput.value;
     const guessedTeacher=getTeacher(userGuess);
     if(guessedTeacher){
-        guesses ++;
-        guessTxtInput.value="";
-        calculateCorrectTeacher(guessedTeacher);
-        if(won===true){
-            winDialog.showModal();
+        if(!hasGuessed(guessedTeacher))
+        {
+            guesses ++;
+            guessHistory.push(guessedTeacher);
+            guessTxtInput.value="";
+            calculateCorrectTeacher(guessedTeacher);
+            if(won===true){
+                winDialog.showModal();
+            }
         }
+        else{
+        resultOutput.innerHTML+=`<p style="color:red">You already guessed that teacher!</p><hr>`;
+        }    
     }
     else{
-        resultOutput.innerHTML+=`<p style="color:red">That isn't a teacher</p>`
+        resultOutput.innerHTML+=`<p style="color:red">That isn't a teacher</p><hr>`;
     }
-    guessDisplay.innerHTML=`<p>${guesses}</p>`
+    guessDisplay.innerHTML=`<p>${guesses}</p>`;
 }
 
 function getTeacher(guess){
+    let modifiedGuess = guess.toLowerCase();
+    modifiedGuess = modifiedGuess.replace(/ /g, "");
+    if(modifiedGuess[0]=== "m" && (modifiedGuess[1]=== "r" || modifiedGuess[1] ==="s"))
+    {
+        if(modifiedGuess[2]===".")
+        {
+            modifiedGuess = modifiedGuess.replace(".","");
+        }
+        modifiedGuess = modifiedGuess.replace("mr","");
+        modifiedGuess = modifiedGuess.replace("ms","");
+    }
+    if(modifiedGuess[0]==="d" && modifiedGuess[1]==="r")
+    {
+        if(modifiedGuess[2]===".")
+        {
+            modifiedGuess = modifiedGuess.replace(".","");
+        }
+        modifiedGuess = modifiedGuess.replace("dr","");
+    }
+    modifiedGuess = modifiedGuess.replace("coach","");
     for(let i=0; i<teachers.length; i++)
     {
-        if(guess.toLowerCase() === teachers[i].name.toLowerCase()){
+        let modifiedTeacherString =teachers[i].name.toLowerCase();
+        modifiedTeacherString = modifiedTeacherString.replace(/ /g,"");
+        modifiedTeacherString = modifiedTeacherString.replace("ms.","");
+        modifiedTeacherString = modifiedTeacherString.replace("mr.","");
+        modifiedTeacherString = modifiedTeacherString.replace("dr.","");
+        modifiedTeacherString = modifiedTeacherString.replace("coach","");
+        if(modifiedGuess === modifiedTeacherString){
             return teachers[i];
+        }
+    }
+    return false;
+}
+
+function hasGuessed(guess){
+    for(let i=0; i<guessHistory.length; i++){
+        if(guess.name===guessHistory[i].name)
+        {
+            return true;
         }
     }
     return false;
@@ -71,7 +116,7 @@ function calculateCorrectTeacher(guess){
         {
             if(guess.teachesSubjects[j]===answerTeacher.teachesSubjects[i])
             {
-                subjectCheck="✅"
+                subjectCheck="✅";
             }
         }
     }
@@ -81,11 +126,11 @@ function calculateCorrectTeacher(guess){
         {
             if(guess.teachesGrades[j]===answerTeacher.teachesGrades[i])
             {
-                gradeCheck="✅"
+                gradeCheck="✅";
             }
         }
     }
-    resultOutput.innerHTML+=`<p>Name: ${guess.name} ${nameCheck} | Hair: ${guess.hair}${hairCheck} | Grades Taught: ${guess.teachesGrades} ${gradeCheck} | Subjects Taught: ${guess.teachesSubjects} ${subjectCheck}</p>`;
+    resultOutput.innerHTML+=`<p class="result">Name: ${guess.name} ${nameCheck}</p><p  class="result">Hair: ${guess.hair}${hairCheck}</p><p class="result">Grades Taught: ${guess.teachesGrades} ${gradeCheck}</p><p  class="result">Subjects Taught: ${guess.teachesSubjects} ${subjectCheck}</p><hr>`;
     //return a p tag with highlighted text for right and wrong
 }
 

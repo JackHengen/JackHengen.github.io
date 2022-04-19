@@ -22,7 +22,7 @@ h1, h2{
 #projectShowcase{
     width: 50vw;
     margin: 20vh auto;
-    height: 50vh;
+    height: auto;
     overflow:scroll;
     display: flex;
     scroll-snap-type: x mandatory;
