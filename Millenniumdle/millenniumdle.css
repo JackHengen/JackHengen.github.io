@@ -6,14 +6,17 @@ body{
     background-color: lightcoral;
     font-family: Millennium;
     text-align: center;
+    font-size: 1em;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
 }
 h1{
     color:red;
 }
 header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 10%;
     width:100%;
 }
 #gameContainer{
@@ -21,11 +24,22 @@ header{
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 80%;
 }
-#results{
-    width: 60%;
-    max-height: 50vh;
+#resultsContainer{
+    background-color: white;
+    width: 75%;
+    max-height: 80vh;
     overflow-y: scroll;
+    min-height: 10em;
+    border: 1px solid black;
+    position: relative;
+}
+#resultsHeader{
+    position:sticky; 
+    top: 0; width:100%; 
+    background-color:rgba(240,240,240);
+    padding: .5em 0em;
 }
 .result{
     display: inline-block;
@@ -34,12 +48,13 @@ header{
 #guessContainer{
     display:flex;
     align-items: center;
+    height: 10vh;
 }
 #guessBtn{
     font-family: Millennium;
-    box-sizing: border-box;
-    -moz-box-sizing:border-box; /* Firefox */
-    -webkit-box-sizing:border-box; /* Safari */
+    height: 1.5em;
+    font-size: 1em;
+    font-weight:lighter;
 }
 #guessDisplay{
     background-color: white;
@@ -47,7 +62,10 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10%;
+    height: 1.5em;
+    padding: 0em .2em;
+    margin: .2em;
+    box-sizing: border-box;
 }
 dialog{
     max-width: 25vw;
@@ -57,11 +75,18 @@ dialog::backdrop{
     background-color: rgba(50,50,50,.25);
 }
 @media screen and (max-width:1160px){
+    body{
+        font-size: .9em;
+    }
     .result{
         width: 50%;
     }
+    
 }
 @media screen and (max-width:800px){
+    body{
+        font-size: .8em;
+    }
     .result{
         width: 100%;
     }

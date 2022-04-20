@@ -1,28 +1,28 @@
 
 const guessTxtInput =document.getElementById("guessTxtInput");
-const resultOutput = document.getElementById("results");
-const guessDisplay = document.getElementById("guessDisplay");
+const resultContainerDiv =document.getElementById("resultsContainer")
+const resultContentDiv = document.getElementById("results");
+const resultHeaderDiv = document.getElementById("resultsHeader");
 const winDialog = document.getElementById("winDialog");
 const helpDialog = document.getElementById("howToPlay");
 
 
-let won = false;
-let answerTeacher = getNewTeacher();
-let guesses = 0;
-let guessHistory =[];
-guessDisplay.innerHTML=`<p>${guesses}</p>`;
+let won;
+let answerTeacher;
+let guesses;
+let guessHistory;
 
 
 function newGame(){
     won = false;
     answerTeacher = getNewTeacher();
     winDialog.close();
-    resultOutput.innerHTML="";
     guesses =0;
-    guessDisplay.innerHTML=`<p>${guesses}</p>`;
+    guessHistory=[];
+    resultHeaderDiv.innerHTML=`<h3>Guesses: ${guesses}</h3>`;;
 }
 
-
+newGame();
 function guess(){
 
     const userGuess = guessTxtInput.value;
@@ -39,13 +39,14 @@ function guess(){
             }
         }
         else{
-        resultOutput.innerHTML+=`<p style="color:red">You already guessed that teacher!</p><hr>`;
+        resultContentDiv.innerHTML+=`<p style="color:red">You already guessed that teacher!</p><hr>`;
         }    
     }
     else{
-        resultOutput.innerHTML+=`<p style="color:red">That isn't a teacher</p><hr>`;
+        resultContentDiv.innerHTML+=`<p style="color:red">That isn't a teacher</p><hr>`;
     }
-    guessDisplay.innerHTML=`<p>${guesses}</p>`;
+    resultHeaderDiv.innerHTML=`<h3>Guesses: ${guesses}</h3>`;
+    resultContainerDiv.scrollTop = resultContainerDiv.scrollHeight;
 }
 
 function getTeacher(guess){
@@ -130,7 +131,7 @@ function calculateCorrectTeacher(guess){
             }
         }
     }
-    resultOutput.innerHTML+=`<p class="result">Name: ${guess.name} ${nameCheck}</p><p  class="result">Hair: ${guess.hair}${hairCheck}</p><p class="result">Grades Taught: ${guess.teachesGrades} ${gradeCheck}</p><p  class="result">Subjects Taught: ${guess.teachesSubjects} ${subjectCheck}</p><hr>`;
+    resultContentDiv.innerHTML+=`<p class="result">Name: ${guess.name} ${nameCheck}</p><p  class="result">Hair: ${guess.hair}${hairCheck}</p><p class="result">Grades Taught: ${guess.teachesGrades} ${gradeCheck}</p><p  class="result">Subjects Taught: ${guess.teachesSubjects} ${subjectCheck}</p><hr>`;
     //return a p tag with highlighted text for right and wrong
 }
 
