@@ -19,7 +19,8 @@ function newGame(){
     winDialog.close();
     guesses =0;
     guessHistory=[];
-    resultHeaderDiv.innerHTML=`<h3>Guesses: ${guesses}</h3>`;;
+    resultHeaderDiv.innerHTML=`<h3>Guesses: ${guesses}</h3>`;
+    resultContentDiv.innerHTML ="";
 }
 
 newGame();
