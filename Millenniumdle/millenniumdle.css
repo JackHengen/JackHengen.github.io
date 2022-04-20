@@ -39,7 +39,7 @@ header{
     position:sticky; 
     top: 0; width:100%; 
     background-color:rgba(240,240,240);
-    padding: .5em 0em;
+    padding: .5em 0em;   
 }
 .result{
     display: inline-block;
@@ -52,20 +52,8 @@ header{
 }
 #guessBtn{
     font-family: Millennium;
-    height: 1.5em;
-    font-size: 1em;
     font-weight:lighter;
-}
-#guessDisplay{
-    background-color: white;
-    border: 1px solid gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 1.5em;
-    padding: 0em .2em;
-    margin: .2em;
-    box-sizing: border-box;
+    margin: 0em 1em;
 }
 dialog{
     max-width: 25vw;
@@ -73,6 +61,12 @@ dialog{
 }
 dialog::backdrop{
     background-color: rgba(50,50,50,.25);
+}
+input{
+    font-size: 16px;
+}
+input:focus{
+    font-size: 16px;
 }
 @media screen and (max-width:1160px){
     body{
