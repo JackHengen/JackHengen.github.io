@@ -29,7 +29,7 @@ header{
 #resultsContainer{
     background-color: white;
     width: 75%;
-    max-height: 80vh;
+    max-height: 90%;
     overflow-y: scroll;
     min-height: 10em;
     border: 1px solid black;
@@ -48,7 +48,7 @@ header{
 #guessContainer{
     display:flex;
     align-items: center;
-    height: 10vh;
+    height: 10%;
 }
 #guessBtn{
     font-family: Millennium;
