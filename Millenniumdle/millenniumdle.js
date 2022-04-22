@@ -4,16 +4,16 @@ const resultContainerDiv =document.getElementById("resultsContainer")
 const resultContentDiv = document.getElementById("results");
 const resultHeaderDiv = document.getElementById("resultsHeader");
 const winDialog = document.getElementById("winDialog");
-const helpDialog = document.getElementById("howToPlay");
-
+const winTxt = document.getElementById("winTxt");
+const newGameDiv= document.getElementById("newGame");
 
 let won;
 let answerTeacher;
 let guesses;
 let guessHistory;
 
-
 function newGame(){
+    newGameDiv.innerHTML="";
     won = false;
     answerTeacher = getNewTeacher();
     winDialog.close();
@@ -24,18 +24,20 @@ function newGame(){
 }
 
 newGame();
+
 function guess(){
 
     const userGuess = guessTxtInput.value;
-    const guessedTeacher=getTeacher(userGuess);
-    if(guessedTeacher){
-        if(!hasGuessed(guessedTeacher))
+    const currentGuessedTeacher=getTeacher(userGuess);
+    if(currentGuessedTeacher){
+        if(!hasAlreadyGuessedTeacher(currentGuessedTeacher))
         {
             guesses ++;
-            guessHistory.push(guessedTeacher);
+            guessHistory.push(currentGuessedTeacher);
             guessTxtInput.value="";
-            calculateCorrectTeacher(guessedTeacher);
+            resultContentDiv.innerHTML +=calculateResultString(currentGuessedTeacher, answerTeacher) + "<hr>";
             if(won===true){
+                winTxt.textContent =`It was ${answerTeacher.name}! You got it in ${guesses} guesses!`;
                 winDialog.showModal();
             }
         }
@@ -86,7 +88,7 @@ function getTeacher(guess){
     return false;
 }
 
-function hasGuessed(guess){
+function hasAlreadyGuessedTeacher(guess){
     for(let i=0; i<guessHistory.length; i++){
         if(guess.name===guessHistory[i].name)
         {
@@ -97,42 +99,42 @@ function hasGuessed(guess){
 }
 
 
-function calculateCorrectTeacher(guess){
+function calculateResultString(guess, actualTeacher){
     let nameCheck="❌";
     let hairCheck="❌";
     let gradeCheck="❌";
     let subjectCheck="❌";
 
-    if(guess.name===answerTeacher.name)
+    if(guess.name===actualTeacher.name)
     {
         nameCheck="✅";
         won = true;
     }
-    if(guess.hair===answerTeacher.hair)
+    if(guess.hair===actualTeacher.hair)
     {
         hairCheck="✅";
     }
-    for(let i=0; i<answerTeacher.teachesSubjects.length; i++)
+    for(let i=0; i<actualTeacher.teachesSubjects.length; i++)
     {
         for(let j=0; j<guess.teachesSubjects.length; j++)
         {
-            if(guess.teachesSubjects[j]===answerTeacher.teachesSubjects[i])
+            if(guess.teachesSubjects[j]===actualTeacher.teachesSubjects[i])
             {
                 subjectCheck="✅";
             }
         }
     }
-    for(let i=0; i<answerTeacher.teachesGrades.length; i++)
+    for(let i=0; i<actualTeacher.teachesGrades.length; i++)
     {
         for(let j=0; j<guess.teachesGrades.length; j++)
         {
-            if(guess.teachesGrades[j]===answerTeacher.teachesGrades[i])
+            if(guess.teachesGrades[j]===actualTeacher.teachesGrades[i])
             {
                 gradeCheck="✅";
             }
         }
     }
-    resultContentDiv.innerHTML+=`<p class="result">Name: ${guess.name} ${nameCheck}</p><p  class="result">Hair: ${guess.hair}${hairCheck}</p><p class="result">Grades Taught: ${guess.teachesGrades} ${gradeCheck}</p><p  class="result">Subjects Taught: ${guess.teachesSubjects} ${subjectCheck}</p><hr>`;
+    return `<p class="result">Name: ${guess.name} ${nameCheck}</p><p  class="result">Hair: ${guess.hair}${hairCheck}</p><p class="result">Grades Taught: ${guess.teachesGrades} ${gradeCheck}</p><p  class="result">Subjects Taught: ${guess.teachesSubjects} ${subjectCheck}</p>`;
     //return a p tag with highlighted text for right and wrong
 }
 
@@ -141,23 +143,13 @@ function getNewTeacher(){
     return teachers[index];
 }
 
-function browseName(){
-    input =guessTxtInput.value;
-
-}
-
 guessTxtInput.addEventListener("keyup", (e) => {
     if(e.key ==="Enter" && guessTxtInput.value != ""){
         guess();
     }
 })
 
-
-
-/*
-function getPersonDetails(person){
-    console.log(`name:${person.name}, grade:${person.gradeLevel}, hair color:${person.hair}, eye color:${person.eyeColor}`);
+function closeWin(){
+    winDialog.close();
+    newGameDiv.innerHTML += `<button onclick="newGame()">New Game</button>`
 }
-
-getPersonDetails(teachers[1]);
-*/

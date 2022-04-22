@@ -12,6 +12,7 @@
     <header>
 
         <h1>Millennium<span style="color:greenyellow">dle</span></h1>
+        <input type="image" alt="Help" src="resources/images/Blue_question_mark_icon.svg" onclick="showHelp()" id="helpBtn"></button>
         <hr>
 
     </header>
@@ -33,16 +34,20 @@
             <input type="text" id="guessTxtInput">
             <button id="guessBtn" onclick="guess()">Guess</button>
         </div>
-    
+        <div id="newGame">
+            
+        </div>
     </div>
 
     <dialog id="winDialog">
 
-        <h1>YOU WON!</h1>
+        <h1>You Won!</h1>
+        <h3 id="winTxt"> </h3>
         <a href="">Add a student into the game</a>
         <br>
         <br>
-        <button onclick="newGame()">Play Again</button>
+        <button onclick="closeWin()">Close</button>
+        <button onclick="newGame()">Play Again 🔁</button>
 
     </dialog>
 
@@ -53,17 +58,28 @@
 
         <ol>
             <li>Input any teacher and press guess</li>
-            <li>The game will tell you whether certain traits of that teacher match the mystery teacher</li>
-            <li>For example</li>
-        </ol>   
+            <li>The game will tell you whether certain traits of that teacher match the mystery teachers</li>
+            <li>Using these hints try to guess the mystery teacher in the fewest guesses as possible!</li>
+            </ol>
+
+            <hr>
+            <div id="gameExamples">
+
+            </div>
+            <button onclick="updateGameExample()">New Example</button>
+            <p>If the guessed teacher and mystery teacher teach one or more grade or subject in common, the game will show: ✅</p>
+            <hr>
+            <button onclick="closeHelp()">Got it 👍</button>
     </dialog>
 
+        
 
 
 
     <script src="classes.js"></script>
     <script src="teachers.js"></script>
     <script src="millenniumdle.js"></script>
+    <script src="helpDialog.js"></script>
 
 </body>
 </html>
