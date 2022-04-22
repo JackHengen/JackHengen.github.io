@@ -9,9 +9,6 @@ Be able to change color scheme by pushing a button on the site*/
 body{
     background-color: rgb(30,30,30);
 }
-::-webkit-scrollbar {
-    display: none;
-}
 h1{
     text-align: center;
 }
@@ -20,10 +17,10 @@ h1, h2{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 #projectShowcase{
-    width: 50vw;
+    width: 60vw;
+    height: 33.75vw;
     margin: 20vh auto;
-    height: auto;
-    overflow:scroll;
+    overflow-x:scroll;
     display: flex;
     scroll-snap-type: x mandatory;
 }
@@ -37,8 +34,9 @@ h1, h2{
     scroll-snap-align: start;
 }
 .project p{
-    
-    margin: 10px;
+    max-width: 40ch;
+    margin: auto;
+    padding: .5em;
 }
 #millenniumdle{
     text-align: center;
@@ -47,4 +45,14 @@ h1, h2{
     background-image: url("resources/Millennium Circle Transparent.png");
     background-position: center;
     color:white;
+}
+@media screen and (max-width:1160px){
+    body{
+        font-size: .9em;
+    }    
+}
+@media screen and (max-width:800px){
+    body{
+        font-size: .8em;
+    }
 }
