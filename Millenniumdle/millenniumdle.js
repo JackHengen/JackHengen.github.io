@@ -28,10 +28,17 @@ newGame();
 function guess(){
 
     const userGuess = guessTxtInput.value;
+    if(won)
+        return;
     const currentGuessedTeacher=getTeacher(userGuess);
     if(currentGuessedTeacher){
-        if(!hasAlreadyGuessedTeacher(currentGuessedTeacher))
+        if(!hasAlreadyGuessedTeacher(currentGuessedTeacher) )
         {
+            if(currentGuessedTeacher === answerTeacher)
+            {
+                won=true;
+            }
+            
             guesses ++;
             guessHistory.push(currentGuessedTeacher);
             guessTxtInput.value="";
@@ -108,7 +115,6 @@ function calculateResultString(guess, actualTeacher){
     if(guess.name===actualTeacher.name)
     {
         nameCheck="✅";
-        won = true;
     }
     if(guess.hair===actualTeacher.hair)
     {
