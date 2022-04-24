@@ -6,7 +6,7 @@ body{
     background-color: lightcoral;
     font-family: Millennium;
     text-align: center;
-    font-size: 1em;
+
     height: 100vh;
     padding: 0px;
     margin: 0px;
@@ -15,10 +15,11 @@ body{
 h1{
     color:red;
     display: inline-block;
-    margin-right: .5em;
+    margin: .5em;
 }
 header{
-    height: 10%;
+    box-sizing: border-box;
+    padding: .5em;
     width:100%;
 }
 button{
@@ -43,11 +44,19 @@ input:focus{
     font-size: 16px;
 }
 
+
+
+#headerContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #helpBtn{
     width:2em;
     height:2em;
 }
 #gameContainer{
+    box-sizing: border-box;
     padding:1em;
     display:flex;
     flex-direction: column;
@@ -70,14 +79,14 @@ input:focus{
     background-color:rgba(240,240,240);
     padding: .5em 0em;   
 }
-.result{
-    display: inline-block;
-    width: 25%;
-}
 #guessContainer{
     display:flex;
     align-items: center;
     height: 10%;
+}
+.result{
+    display: inline-block;
+    width: 25%;
 }
 
 
