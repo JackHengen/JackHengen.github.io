@@ -7,6 +7,8 @@ const winDialog = document.getElementById("winDialog");
 const winTxt = document.getElementById("winTxt");
 const newGameDiv= document.getElementById("newGame");
 
+//could be a game class with these variables
+//two different types of game which inheirit from each other
 let won;
 let answerTeacher;
 let guesses;
@@ -38,7 +40,7 @@ function guess(){
             {
                 won=true;
             }
-            
+
             guesses ++;
             guessHistory.push(currentGuessedTeacher);
             guessTxtInput.value="";
