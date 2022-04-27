@@ -29,7 +29,8 @@ function closeWin(){
 function guess(){
     if(game.won)
     {return;}
-    const result = game.AddGuess(guessTxtInput.value);
+    const guess =guessTxtInput.value;
+    const result = game.AddGuess(guess);
     guessTxtInput.value="";
     if(result[0]){
         resultContentDiv.innerHTML += result[1] + "<hr>";
@@ -37,12 +38,12 @@ function guess(){
     else{
         resultContentDiv.innerHTML += `<p style="color:red"> ${result[1]}</p><hr>`
     }
-    
     resultHeaderDiv.innerHTML=`<h3>Guesses: ${game.guesses}</h3>`;
     resultContainerDiv.scrollTop = resultContainerDiv.scrollHeight;
     if(game.won)
     {
         winDialog.showModal();
+        winTxt.innerHTML += `<p>The teacher was <strong>${guess.toUpperCase()}!</strong> You got it in <strong>${game.guesses}</strong> guesses!</p>`
     }
 }
 
