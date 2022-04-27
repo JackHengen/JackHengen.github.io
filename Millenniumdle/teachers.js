@@ -132,9 +132,9 @@ const teachers=[
     new Teacher({
         name:"Ms.Bendon", hair:"brown", teachesGrades:[9,10], teachesSubjects:["Math"]
     }),
-    new Teacher({
-        name:"Ms.O'Neal", hair:"black", teachesGrades:[9,10], teachesSubjects:["Math"]
-    }),
+    // new Teacher({
+    //     name:"Ms.O'Neal", hair:"black", teachesGrades:[9,10], teachesSubjects:["Math"]
+    // }),
     new Teacher({
         name:"Mr.Pollard", hair:"brown", teachesGrades:[9], teachesSubjects:["Research"]
     }),
