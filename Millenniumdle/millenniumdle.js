@@ -7,58 +7,53 @@ const winDialog = document.getElementById("winDialog");
 const winTxt = document.getElementById("winTxt");
 const newGameDiv= document.getElementById("newGame");
 
-//could be a game class with these variables
-//two different types of game which inheirit from each other
-let won;
-let answerTeacher;
-let guesses;
-let guessHistory;
+let game=getNewGame();
 
+
+//events
 function newGame(){
-    newGameDiv.innerHTML="";
-    won = false;
-    answerTeacher = getNewTeacher();
-    winDialog.close();
-    guesses =0;
-    guessHistory=[];
-    resultHeaderDiv.innerHTML=`<h3>Guesses: ${guesses}</h3>`;
-    resultContentDiv.innerHTML ="";
+    game =getNewGame();
 }
 
-newGame();
+guessTxtInput.addEventListener("keyup", (e) => {
+    if(e.key ==="Enter" && guessTxtInput.value != ""){
+        guess();
+    }
+})
+
+function closeWin(){
+    winDialog.close();
+    newGameDiv.innerHTML += `<button onclick="newGame()">New Game</button>`
+}
 
 function guess(){
-
-    const userGuess = guessTxtInput.value;
-    if(won)
-        return;
-    const currentGuessedTeacher=getTeacher(userGuess);
-    if(currentGuessedTeacher){
-        if(!hasAlreadyGuessedTeacher(currentGuessedTeacher) )
-        {
-            if(currentGuessedTeacher === answerTeacher)
-            {
-                won=true;
-            }
-
-            guesses ++;
-            guessHistory.push(currentGuessedTeacher);
-            guessTxtInput.value="";
-            resultContentDiv.innerHTML +=calculateResultString(currentGuessedTeacher, answerTeacher) + "<hr>";
-            if(won===true){
-                winTxt.textContent =`It was ${answerTeacher.name}! You got it in ${guesses} guesses!`;
-                winDialog.showModal();
-            }
-        }
-        else{
-        resultContentDiv.innerHTML+=`<p style="color:red">You already guessed that teacher!</p><hr>`;
-        }    
+    if(game.won)
+    {return;}
+    const result = game.AddGuess(guessTxtInput.value);
+    guessTxtInput.value="";
+    if(result[0]){
+        resultContentDiv.innerHTML += result[1] + "<hr>";
     }
     else{
-        resultContentDiv.innerHTML+=`<p style="color:red">That isn't a teacher</p><hr>`;
+        resultContentDiv.innerHTML += `<p style="color:red"> ${result[1]}</p><hr>`
     }
-    resultHeaderDiv.innerHTML=`<h3>Guesses: ${guesses}</h3>`;
+    
+    resultHeaderDiv.innerHTML=`<h3>Guesses: ${game.guesses}</h3>`;
     resultContainerDiv.scrollTop = resultContainerDiv.scrollHeight;
+    if(game.won)
+    {
+        winDialog.showModal();
+    }
+}
+
+
+//functions
+function getNewGame(){
+    resultHeaderDiv.innerHTML=`<h3>Guesses: 0</h3>`;
+    resultContentDiv.innerHTML ="";
+    winDialog.close();
+    newGameDiv.innerHTML="";
+    return new Game();
 }
 
 function getTeacher(guess){
@@ -97,67 +92,8 @@ function getTeacher(guess){
     return false;
 }
 
-function hasAlreadyGuessedTeacher(guess){
-    for(let i=0; i<guessHistory.length; i++){
-        if(guess.name===guessHistory[i].name)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-
-function calculateResultString(guess, actualTeacher){
-    let nameCheck="❌";
-    let hairCheck="❌";
-    let gradeCheck="❌";
-    let subjectCheck="❌";
-
-    if(guess.name===actualTeacher.name)
-    {
-        nameCheck="✅";
-    }
-    if(guess.hair===actualTeacher.hair)
-    {
-        hairCheck="✅";
-    }
-    for(let i=0; i<actualTeacher.teachesSubjects.length; i++)
-    {
-        for(let j=0; j<guess.teachesSubjects.length; j++)
-        {
-            if(guess.teachesSubjects[j]===actualTeacher.teachesSubjects[i])
-            {
-                subjectCheck="✅";
-            }
-        }
-    }
-    for(let i=0; i<actualTeacher.teachesGrades.length; i++)
-    {
-        for(let j=0; j<guess.teachesGrades.length; j++)
-        {
-            if(guess.teachesGrades[j]===actualTeacher.teachesGrades[i])
-            {
-                gradeCheck="✅";
-            }
-        }
-    }
-    return `<p class="result">Name: ${guess.name} ${nameCheck}</p><p  class="result">Hair: ${guess.hair}${hairCheck}</p><p class="result">Grades Taught: ${guess.teachesGrades} ${gradeCheck}</p><p  class="result">Subjects Taught: ${guess.teachesSubjects} ${subjectCheck}</p>`;
-    //return a p tag with highlighted text for right and wrong
-}
-
-function getNewTeacher(){
+function getRandomTeacher(){
     const index = Math.floor(Math.random() * teachers.length);
     return teachers[index];
 }
 
-guessTxtInput.addEventListener("keyup", (e) => {
-    if(e.key ==="Enter" && guessTxtInput.value != ""){
-        guess();
-    }
-})
-
-function closeWin(){
-    winDialog.close();
-    newGameDiv.innerHTML += `<button onclick="newGame()">New Game</button>`
-}

@@ -76,7 +76,7 @@ const teachers=[
         name:"Ms.Male", hair:"black", teachesGrades:[11,12], teachesSubjects:["History"]
     }),
     new Teacher({
-        name:"Mr.Michealson", hair:"gray", teachesGrades:[10], teachesSubjects:["Math"]
+        name:"Mr.Michaelson", hair:"gray", teachesGrades:[10], teachesSubjects:["Math"]
     }),
     new Teacher({
         name:"Mr.Petrone", hair:"bald", teachesGrades:[10], teachesSubjects:["Science"]
@@ -128,84 +128,20 @@ const teachers=[
     }),
     new Teacher({
         name:"Ms.Murdock", hair:"brown", teachesGrades:[11,12], teachesSubjects:["Math"]
+    }),
+    new Teacher({
+        name:"Ms.Bendon", hair:"brown", teachesGrades:[9,10], teachesSubjects:["Math"]
+    }),
+    new Teacher({
+        name:"Ms.O'Neal", hair:"black", teachesGrades:[9,10], teachesSubjects:["Math"]
+    }),
+    new Teacher({
+        name:"Mr.Pollard", hair:"brown", teachesGrades:[9], teachesSubjects:["Research"]
+    }),
+    new Teacher({
+        name:"Ms.Sulthana", hair:"black", teachesGrades:[10], teachesSubjects:["English", "History"]
+    }),
+    new Teacher({
+        name:"Ms.Valencia", hair:"brown", teachesGrades:[11,12], teachesSubjects:["Language"]
     })
-//
-//
-//
-//     new Teacher({
-//         name:"Mr.Arvai"
-//     }),
-//     new Teacher({
-//         name:"Ms.Baerga"
-//     }),
-//     new Teacher({
-//         name:"Ms.Bendon"
-//     }),
-//     new Teacher({
-//         name:"Ms.Bennett"
-//     }),
-//     new Teacher({
-//         name:"Mr.Blair"
-//     }),
-//     new Teacher({
-//         name:"Ms.Bognar"
-//     }),
-//     new Teacher({
-//         name:"Ms.Castronovo"
-//     }),
-//     new Teacher({
-//         name:"Ms.Cornibe"
-//     }),
-//     new Teacher({
-//         name:"Mr.Deegan"
-//     }),
-//     new Teacher({
-//         name:"Ms.Duffy"
-//     }),
-//     new Teacher({
-//         name:"Ms.Feirsen"
-//     }),
-//     new Teacher({
-//         name:"Ms.Fortier"
-//     }),
-//     new Teacher({
-//         name:"Ms.McBrien"
-//     }),
-//     new Teacher({
-//         name:"Ms.Middleton"
-//     }),
-//     new Teacher({
-//         name:"Ms.Moverman"
-//     }),
-//     new Teacher({
-//         name:"Ms.O'Neal"
-//     }),
-//     new Teacher({
-//         name:"Mr.Pollard"
-//     }),
-//     new Teacher({
-//         name:"Mr.Post"
-//     }),
-//     new Teacher({
-//         name:"Ms.Roberts"
-//     }),
-//     new Teacher({
-//         name:"Ms.Scrivner"
-//     }),
-//     new Teacher({
-//         name:"Ms.Sulthana"
-//     }),
-//     new Teacher({
-//         name:"Ms.Tannis"
-//     }),
-//     new Teacher({
-//         name:"Ms.Valencia"
-//     }),
-//     new Teacher({
-//         name:"Mr.Wachter"
-//     }),
-
-
-
-
 ]

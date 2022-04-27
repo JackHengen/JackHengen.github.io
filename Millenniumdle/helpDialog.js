@@ -6,13 +6,14 @@ let mysteryTeacher;
 updateGameExample();
 
 function updateGameExample(){
-    guessedTeacher = getNewTeacher();
-    mysteryTeacher = getNewTeacher();
+    const g = new Game()
+    const guess =getRandomTeacher()
+    const result = g.AddGuess(guess.name);
     gameExampleDiv.innerHTML =
     `
-    For example: if you guess <b>"${guessedTeacher.name}"</b> and the mystery teacher is actually: <b>${mysteryTeacher.name}</b>
+    For example: if you guess <b>"${guess.name}"</b> and the mystery teacher is actually: <b>${g.answer}</b>
         <br>The result will be:
-        <br>${calculateResultString(guessedTeacher,mysteryTeacher)}
+        <br>${result[1]}
     `
 }
 
