@@ -7,6 +7,7 @@ const winDialog = document.getElementById("winDialog");
 const winTxt = document.getElementById("winTxt");
 const newGameDiv= document.getElementById("newGame");
 const forfeitDiv= document.getElementById("forfeit");
+const answerDiv = document.getElementById("answer");
 
 let game;
 newGame();
@@ -16,8 +17,9 @@ newGame();
 function forfeit()
 {
     game.forfeit();
-    newGameDiv.innerHTML = `<button onclick="newGame()>New Game</button>`;
-    forfeitDiv.innerHTML=`<p>The answer was ${game.answer.name}`;
+    newGameDiv.innerHTML = `<button onclick="newGame()">New Game</button>`;
+    forfeitDiv.innerHTML ="";
+    answerDiv.innerHTML=`<p>The answer was ${game.answer.name}`;
 }
 
 guessTxtInput.addEventListener("keyup", (e) => {
@@ -55,13 +57,14 @@ function guess(){
     if(game.lost)
     {
         newGameDiv.innerHTML = `<button onclick="newGame()>New Game</button>`;
-        forfeitDiv.innerHTML=`<p>The answer was ${game.answer.name}`;
+        answerDiv.innerHTML=`<p>The answer was ${game.answer.name}`;
     }
 }
 
 
 //functions
 function newGame(){
+    answerDiv.innerHTML ="";
     resultHeaderDiv.innerHTML=`<h3>Guesses: 0</h3>`;
     resultContentDiv.innerHTML ="";
     winDialog.close();
