@@ -11,7 +11,7 @@ function updateGameExample(){
     const result = g.AddGuess(guess.name);
     gameExampleDiv.innerHTML =
     `
-    For example: if you guess <b>"${guess.name}"</b> and the mystery teacher is actually: <b>${g.answer}</b>
+    For example: if you guess <b>"${guess.name}"</b> and the mystery teacher is actually: <b>${g.answer.name}</b>
         <br>The result will be:
         <br>${result[1]}
     `

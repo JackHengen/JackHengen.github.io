@@ -12,20 +12,23 @@ class Game{
     constructor()
     {
         this.answer = getRandomTeacher();
-        this.won = false;
-        this.guesses =0;
-        this.guessHistory =[];
+        this.won = false;      //
+        this.lost = false;     //
+        this.guesses =0;       //
+        this.guessHistory =[]; // make all readonly
     }
-
     AddGuess =function(guess){
+        if(this.won || this.lost)
+            return;
         const userGuess = getTeacher(guess);
-        if(userGuess && !this.guessHistory.includes(userGuess) &&!this.won)
+        if(userGuess && !this.guessHistory.includes(userGuess))
         {
             this.guesses++;
             this.guessHistory.push(userGuess);
             if(userGuess ===this.answer)
             {
                 this.won =true;
+                //update stats
             }
             const result = this.#calculateResultString(userGuess);
             return [true,result]; 
@@ -39,15 +42,14 @@ class Game{
             {
                 return [false,"That teacher was already guessed!"];
             }
-            else if(this.won)
-            {
-                return [false,"You already won"];
-            }
             else
             {
                 return [false,"Unknown Error :("];
             }
         }
+    }
+    forfeit(){
+        this.lost=true;
     }
 
     #calculateResultString(guess){

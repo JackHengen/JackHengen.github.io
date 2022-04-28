@@ -6,13 +6,18 @@ const resultHeaderDiv = document.getElementById("resultsHeader");
 const winDialog = document.getElementById("winDialog");
 const winTxt = document.getElementById("winTxt");
 const newGameDiv= document.getElementById("newGame");
+const forfeitDiv= document.getElementById("forfeit");
 
-let game=getNewGame();
+let game;
+newGame();
 
 
 //events
-function newGame(){
-    game =getNewGame();
+function forfeit()
+{
+    game.forfeit();
+    newGameDiv.innerHTML = `<button onclick="newGame()>New Game</button>`;
+    forfeitDiv.innerHTML=`<p>The answer was ${game.answer.name}`;
 }
 
 guessTxtInput.addEventListener("keyup", (e) => {
@@ -27,8 +32,8 @@ function closeWin(){
 }
 
 function guess(){
-    if(game.won)
-    {return;}
+    if(game.won || game.lost)
+        return;
     const guess =guessTxtInput.value;
     const result = game.AddGuess(guess);
     guessTxtInput.value="";
@@ -44,17 +49,25 @@ function guess(){
     {
         winDialog.showModal();
         winTxt.innerHTML += `<p>The teacher was <strong>${guess.toUpperCase()}!</strong> You got it in <strong>${game.guesses}</strong> guesses!</p>`
+        newGameDiv.innerHTML = `<button onclick="newGame()>New Game</button>`;
+        forfeitDiv.innerHTML="";
+    }
+    if(game.lost)
+    {
+        newGameDiv.innerHTML = `<button onclick="newGame()>New Game</button>`;
+        forfeitDiv.innerHTML=`<p>The answer was ${game.answer.name}`;
     }
 }
 
 
 //functions
-function getNewGame(){
+function newGame(){
     resultHeaderDiv.innerHTML=`<h3>Guesses: 0</h3>`;
     resultContentDiv.innerHTML ="";
     winDialog.close();
     newGameDiv.innerHTML="";
-    return new Game();
+    forfeitDiv.innerHTML="Don't know the teacher? <button onclick='forfeit()'>Forfeit</button>"
+    game = new Game();
 }
 
 function getTeacher(guess){
