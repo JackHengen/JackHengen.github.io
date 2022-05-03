@@ -34,7 +34,7 @@ const teachers=[
         name:"Ms.Eichel",hair:"brown",teachesGrades:[12],teachesSubjects:["History"]
     }),
     new Teacher({
-        name:"Ms.Preissel",hair:"red",teachesGrades:[12],teachesSubjects:["Math"]
+        name:"Ms.Preissel",hair:"brown",teachesGrades:[12],teachesSubjects:["Math"]
     }),
     new Teacher({
         name:"Ms.Sasson",hair:"black",teachesGrades:[9,12],teachesSubjects:["Science"]
@@ -143,5 +143,35 @@ const teachers=[
     }),
     new Teacher({
         name:"Ms.Valencia", hair:"brown", teachesGrades:[11,12], teachesSubjects:["Language"]
+    }),
+    new Teacher({
+        name:"Ms.Baerga", hair:"black", teachesGrades:[11], teachesSubjects:["Science", "Research"]
+    }),
+    new Teacher({
+        name:"Mr.Blair", hair:"brown", teachesGrades:[11], teachesSubjects:["English"]
+    }),
+    new Teacher({
+        name:"Ms.Cornibe", hair:"brown", teachesGrades:[11,12], teachesSubjects:["Math"]
+    }),
+    new Teacher({
+        name:"Ms.Middleton", hair:"black", teachesGrades: [9], teachesSubjects:[""]
+    }),
+    new Teacher({
+        name:"Ms.Moverman", hair:"brown", teachesGrades:[11], teachesSubjects:["History"]
+    }),
+    new Teacher({
+        name:"Mr.Post", hair:"", teachesGrades:[9], teachesSubjects:["Science"]
+    }),
+    new Teacher({
+        name:"Ms.Roberts", hair:"blonde", teachesGrades:[9], teachesSubjects:["English","History"]
+    }),
+    new Teacher({
+        name:"Mr.Wachter", hair:"black", teachesGrades:[10], teachesSubjects:["Science"]
+    }),
+    new Teacher({
+        name:"Ms.Bennet", hair:"black", teachesGrades:[9], teachesSubjects:["Math"]
+    }),
+    new Teacher({
+        name:"Ms.McBrien", hair:"red", teachesGrades:[12], teachesSubjects:["English"]
     })
 ]
